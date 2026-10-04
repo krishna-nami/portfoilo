@@ -5,14 +5,30 @@ import { profile } from "@/lib/data";
 import "./globals.css";
 const themeScript = `try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}`;
 
+const title = `${profile.fullName} — ${profile.role}`;
 export const metadata: Metadata = {
-  title: `${profile.fullName} — ${profile.role}`,
+  metadataBase: new URL(profile.website),
+  title: { default: title, template: `%s | ${profile.fullName}` },
+
   description: profile.tagline,
+  authors: [{ name: profile.fullName, url: profile.website }],
+  creator: profile.fullName,
+  alternates: { canonical: "/" },
+
   openGraph: {
-    title: `${profile.fullName} — ${profile.role}`,
-    description: profile.tagline,
     type: "website",
+    url: "/",
+    siteName: profile.fullName,
+    title,
+    description: profile.tagline,
+    locale: "en_AU",
   },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: profile.tagline,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

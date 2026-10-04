@@ -6,6 +6,7 @@ export const profile = {
   name: "Krishna",
 
   fullName: "Krishna Banstola",
+  website: "https://krishna-banstola.vercel.app",
   role: "Full-Stack Developer",
   location: "Canberra, ACT",
   tagline:
